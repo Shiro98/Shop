@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
 
 namespace Shop.Controllers
 {
@@ -19,20 +20,27 @@ namespace Shop.Controllers
             return View();
         }
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Index(LoginModel model)
         {
-            var result = new AccountModel().Login(model.ID, model.UserName, model.Password);
-            if (result==1 && ModelState.IsValid)
+            
+            //Account result = new AccountModel().Login(model.UserName, model.Password);
+            if (Membership.ValidateUser(model.UserName, model.Password)!=null && ModelState.IsValid)
             {
-                SessionHelper.SetSession(new UserSession() { UserName = model.UserName });
+                // SessionHelper.SetSession(new UserSession() { UserName = model.UserName });
+                FormsAuthentication.SetAuthCookie(model.UserName, model.RememberMe);
                 return RedirectToAction("Index", "Home");
             }
             else
             {
                 ModelState.AddModelError("", "Tên đăng nhập hoặc mật khẩu không đúng");
-                Console.Write(result);
             }
             return View(model);
+        }
+        public ActionResult Logout()
+        {
+            FormsAuthentication.SignOut();
+            return RedirectToAction("Index", "Login");
         }
     }
 }

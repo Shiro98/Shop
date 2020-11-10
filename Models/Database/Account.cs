@@ -15,7 +15,7 @@ namespace Models.Database
         [StringLength(50)]
         public string Username { get; set; }
 
-        [StringLength(32)]
+        [StringLength(50)]
         public string pass { get; set; }
     }
 }

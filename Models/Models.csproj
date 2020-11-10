@@ -53,7 +53,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AccountModel.cs" />
+    <Compile Include="CategoryModel.cs" />
     <Compile Include="Database\Account.cs" />
+    <Compile Include="Database\Category.cs" />
+    <Compile Include="Database\Product.cs" />
     <Compile Include="Database\webapplicationdb.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

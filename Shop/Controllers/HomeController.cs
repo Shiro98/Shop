@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -6,11 +7,14 @@ using System.Web.Mvc;
 
 namespace Shop.Controllers
 {
+    [Authorize]
     public class HomeController : Controller
     {
         public ActionResult Index()
         {
-            return View();
+            var ipCate = new CategoryModel();
+            var Model = ipCate.ListAll();
+            return View(Model);
         }
 
         public ActionResult About()

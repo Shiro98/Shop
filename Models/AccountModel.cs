@@ -16,14 +16,13 @@ namespace Models
         {
             context = new webapplicationdb();
         }
-        public int Login(long ID, string userName, string password)
+        public Account Login(string userName, string Password)
         {
-            return context.Database.ExecuteSqlCommand(
-                "SELECT * FROM Account WHERE ID=@i AND Username=@u AND pass=@p",
+            return context.Database.SqlQuery<Account>(
+                "SELECT * FROM Account WHERE Username=@u AND pass=@p",
                  new SqlParameter("@u", userName),
-                new SqlParameter("@p", password),
-                new SqlParameter("@i", ID)
-                );//.SingleOrDefault();
+                new SqlParameter("@p", Password)
+                ).SingleOrDefault();
             /*string SQL = "SELECT * FROM Account WHERE ID='" +ID+ "' AND Username='"+userName+"' AND pass='"+password+"'";
             return context.Database.SqlQuery<int>(SQL).SingleOrDefault();*/
         }

@@ -38,9 +38,6 @@
                                         @Html.AntiForgeryToken()
                                         @Html.ValidationSummary(true, null, new { @class = "alert alert-danger" })
                                         <div class="form-group">
-                                            @Html.TextBoxFor(model => model.ID, new { @class = "form-control form-control-user", @id = "exampleInputEmail", @placeholder = "Enter ID..." })
-                                        </div>
-                                        <div class="form-group">
                                             @Html.TextBoxFor(model => model.UserName, new { @class = "form-control form-control-user", @id = "exampleInputEmail", @placeholder = "Enter Email Address..." })
                                         </div>
                                         <div class="form-group">

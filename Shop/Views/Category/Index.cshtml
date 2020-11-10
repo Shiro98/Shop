@@ -1,7 +1,9 @@
 ﻿@{
-    ViewBag.Title = "Home Page";
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 @model List<Models.Database.Category>
+
 <div class="card shadow mb-4">
     <div class="card-header py-3">
         <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
@@ -19,6 +21,7 @@
                                 <tr>
                                     <th rowspan="1" colspan="1">ID</th>
                                     <th rowspan="1" colspan="1">Name</th>
+                                    <th rowspan="1" colspan="1">Created Date</th>
                                     <th rowspan="1" colspan="1">Order</th>
                                     <th rowspan="1" colspan="1">Status</th>
                                 </tr>
@@ -27,11 +30,11 @@
                                 @foreach (var item in Model)
                                 {
                                     <tr role="row" class="odd">
-                                        <td class="sorting_1">@item.ID</td>
+                                       <!-- <td class="sorting_1">@item.ID</td>
                                         <td>@item.Name</td>
-                                        <!--<td>@item.CreatedDate.HasValue? @item.CreatedDate.Value.ToString("dd/MM/yyyy") : ""</td>-->
+                                        <td>@item.CreatedDate.HasValue? @item.CreatedDate.Value.ToString("dd/MM/yyyy") : ""</td>
                                         <td>@item.Order.GetValueOrDefault(0)</td>
-                                        <td>@item.Status?"Active":"Blocked"</td>
+                                        <td>@item.Status?"Active":"Blocked"</td>-->
                                     </tr>
                                 }
                             </tbody>
@@ -42,3 +45,4 @@
         </div>
     </div>
 </div>
+
